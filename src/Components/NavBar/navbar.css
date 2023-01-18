@@ -1,0 +1,11 @@
+nav{
+    display: flexbox;
+}
+
+nav ul{
+    flex-direction: column;
+}
+
+nav ul li {
+list-style: none;
+}
