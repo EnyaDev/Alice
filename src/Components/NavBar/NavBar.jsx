@@ -1,26 +1,32 @@
 import NavItem from "./NavItem";
+import './navbar.css';
 // import CartWidget from "./CartWidget"
 
 
 function NavBar() {
-//   const links = [
-//     { title: "Atuendos", url: "/atuendos" },
-//     { title: "Calzado", url: "/calzado" },
-//   ];
+  const links = [
+    { title: "Interiores", url: "/interiores" },
+    { title: "Exteriores", url: "/exteriores" },
+    { title: "Cactus y Suculentas", url: "/cactus y suculentas" },
+  ];
 
   return (
     <nav>
-      <ul className="nav-menu">
-      <a className="navbar-brand" href="/">
-      <NavItem href="/">Alice's Closet</NavItem>
-      </a>
+    <ul className="nav-menu">
+      <NavItem href="/">Alice's Garden</NavItem>
 
-        <NavItem href="/atuendos">Atuendos</NavItem>
+{links.map((elemento) => {
+  elemento.url = "/";
+  return <NavItem href={elemento.url}>{elemento.title}</NavItem>;
+})}
+
+        {/* <NavItem href="/atuendos">Atuendos</NavItem>
         <NavItem href="/calzado">Calzado</NavItem>
-        <NavItem href="/accesorios">Accesorios</NavItem>
+        <NavItem href="/accesorios">Accesorios</NavItem> */}
       </ul>
       {/* {<CartWidget></CartWidget>} */}
       <span>🛒</span>
+
     </nav>
   );
 }

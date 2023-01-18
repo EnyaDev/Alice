@@ -1,36 +1,35 @@
 import "./App.css";
-import Card from "./Components/NavBar/Card";
+import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
 import NavBar from "./Components/NavBar/NavBar";
-import Flex from "./Components/Flex/Flex";
+// import ItemCount from "./Components/ItemCount/ItemCount";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
+  function logOutSession() {
+    console.log("logout");
+  }
+
+  function logInSession(username) {
+    alert(`Bienvenido el usuario: ${username}`);
+  }
+
   return (
-    <div>
-      <NavBar />
-      <Flex>
-      <Card
-        img="/img/Blue Lolinot.jpg"
-        title="Dress"
-        price={300}
-        description="Lolita Blue Dress"
-      />
+  <>
+      <BrowserRouter>
+        <NavBar onLogin={logInSession} onLogout={logOutSession} />
+        <Routes>
+          
+          <Route path="/category/:categoryid" element={<ItemListContainer />} />
 
-      <Card
-        img="https://i.pinimg.com/originals/cf/28/43/cf2843169130133b07556b04cbb94532.jpg"
-        title="Slevees"
-        price={150}
-        description="Mangas de Encaje hecho a mano"
-      />
+          <Route path="/detalle/:itemid" element={<ItemDetailContainer />} />
 
-      <Card
-        img="https://i.ebayimg.com/images/g/V2cAAOSw6fBhP~Qu/s-l500.jpg"
-        title="Boots"
-        price={450}
-        description="Killer Leather Boots"
-      />
-      </Flex>
-    </div>
+          
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
+
 
 export default App;

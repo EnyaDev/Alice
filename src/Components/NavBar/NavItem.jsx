@@ -1,7 +1,9 @@
+import './navbar.css';
+
 const NavItem = ( { children, href }) => {
 
 return (
-    <li>
+    <li class="nav-item">
     <a href={href}>{children}</a>
     </li>
 );

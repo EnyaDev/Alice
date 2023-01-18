@@ -1,28 +1,25 @@
 import { useState, useEffect } from "react";
-
 import Item from "./Item";
 import Flex from "../Flex/Flex";
 import obtenerProductos from "../../services/mockService";
 
 function ItemListContainer() {
-const [cities, setCities] = useState([]);
+  const [plants, setPlants] = useState([]);
 
 useEffect(() => {
-    obtenerProductos()
-      .then((respuesta) => {
-        setCities(respuesta);
-      })
-      .catch((error) => alert(error));
-  }, []);
 
-  <Flex>
-      {cities.map((itemIterado) => {
-        return (
-          <Item id={itemIterado.id} key={itemIterado.id} item={itemIterado} />
-        );
-      })}
-    </Flex>
+  obtenerProductos()
+  .then((respuesta) => {
+    setPlants(respuesta);
+  })
+  .catch((error) => alert(error));
+}, []);
+
+return(
+<Flex> 
+{plants.map( (item)=> <Item key={item.id} item={item}/>)};
+</Flex>
+);
 }
-
 
 export default ItemListContainer;
