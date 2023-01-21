@@ -50,14 +50,36 @@ const database =
 }];
 
 const obtenerProductos = () => {
-    return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(database);
+    }, 2000);
+  });
+};
 
-        let error = false;
-      setTimeout(() => {
-        if (error) reject("Undefined")
-        else resolve(database);
-      }, 2000);
+const getPlants = (idURL) => {
+  return new Promise((resolve, reject) => {
+    const reqItem = database.find((item) => {
+      return item.id === parseInt(idURL);
     });
-  };
-  
-  export default obtenerProductos;
+
+    setTimeout(() => {
+      if (reqItem) resolve(reqItem);
+      else reject("No se encontró el producto");
+    }, 2000);
+  });
+};
+
+const getPlantsByCategory = (categoryURL) => {
+  return new Promise((resolve, reject) => {
+    let reqItems = database.filter((item) => item.category === categoryURL);
+
+    setTimeout(() => {
+      resolve(reqItems);
+    }, 2000);
+  });
+};
+
+export default obtenerProductos;
+
+export { getPlants, getPlantsByCategory };
