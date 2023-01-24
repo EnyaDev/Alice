@@ -15,21 +15,17 @@ function App() {
   }
 
   return (
-  <>
+    <>
       <BrowserRouter>
         <NavBar onLogin={logInSession} onLogout={logOutSession} />
         <Routes>
-          
+          <Route path="/" element={<ItemListContainer />} />
           <Route path="/category/:categoryid" element={<ItemListContainer />} />
-
           <Route path="/detalle/:itemid" element={<ItemDetailContainer />} />
-
-          
         </Routes>
       </BrowserRouter>
     </>
   );
 }
-
 
 export default App;

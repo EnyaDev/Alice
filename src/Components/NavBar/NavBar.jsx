@@ -19,10 +19,6 @@ function NavBar() {
   elemento.url = "/";
   return <NavItem href={elemento.url}>{elemento.title}</NavItem>;
 })}
-
-        {/* <NavItem href="/atuendos">Atuendos</NavItem>
-        <NavItem href="/calzado">Calzado</NavItem>
-        <NavItem href="/accesorios">Accesorios</NavItem> */}
       </ul>
       {/* {<CartWidget></CartWidget>} */}
       <span>🛒</span>
