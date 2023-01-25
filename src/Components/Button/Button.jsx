@@ -1,17 +1,19 @@
 import React from "react";
-import "./button.css";
+import styles from "./button.css";
 
 
-export default function Button(props){
-let[colorState, setColorState] = React.useState();
+export default function Button(props) {
+    // React.useState() -> [ stateVar, setterStateVar ]
+    const [colorState, setColorState] = React.useState("rgb(97, 150, 220)");
 
-let styleButton = {
-    padding:props.padding,
-    backgroundColor:colorState,
-};
-function handleClick(evt) {
-    setColorState("blue")
-}
+    let styleButton = {
+    padding: props.padding,
+    backgroundColor: colorState,
+    };
 
-    return <button onClick={handleClick} style={styleButton} className="btn">{props.children}</button>;
+    return (
+    <button onClick={props.onClick} style={styleButton} className={styles.btn}>
+        {props.children}
+    </button>
+    );
 }

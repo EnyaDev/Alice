@@ -1,11 +1,15 @@
-import './navbar.css';
+import { Link } from "react-router-dom";
 
-const NavItem = ( { children, href }) => {
+const NavItem = ({ to, children }) => {
+  // text = {text: "Calzado"}
 
-return (
-    <li class="nav-item">
-    <a href={href}>{children}</a>
+  return (
+    <li className="nav-item">
+      <Link className="nav-link" to={to}>
+        {children}
+      </Link>
     </li>
-);
+  );
 };
+
 export default NavItem;

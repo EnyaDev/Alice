@@ -5,7 +5,7 @@ const database =
   "category": "Brassicaceae",
   "stock": 85,
   "imgurl": "https://calphotos.berkeley.edu/imgs/512x768/0000_0000/0218/1009.jpeg",
-  "detail": "Streptanthus carinatus C. Wright ex A. Gray ssp. arizonicus (S. Watson) Kruckeb., Rodman & Worthington",
+  "detail": "Streptanthus carinatus, arizonicus",
   "price": 169.99
 }, {
   "id": 2,
@@ -29,7 +29,7 @@ const database =
   "category": "Rosaceae",
   "stock": 7,
   "imgurl": "https://newfs.s3.amazonaws.com/taxon-images-1000s1000/Rosaceae/amelanchier-spicata-fr-ahaines.jpg",
-  "detail": "Amelanchier pumila (Torr. & A. Gray) Nutt. ex M. Roem.",
+  "detail": "Amelanchier pumila Nutt. ex M. Roem.",
   "price": 195.92
 }, {
   "id": 5,

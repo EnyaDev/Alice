@@ -1,30 +1,40 @@
 import NavItem from "./NavItem";
+import Button from "../Button/Button";
 import './navbar.css';
+import { Link } from "react-router-dom";
 // import CartWidget from "./CartWidget"
 
 
-function NavBar() {
-  const links = [
-    { title: "Interiores", url: "/interiores" },
-    { title: "Exteriores", url: "/exteriores" },
-    { title: "Cactus y Suculentas", url: "/cactus y suculentas" },
-  ];
+function NavBar(props) {
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    let user = evt.target.elements[0].value;
+    console.log(user);
+    props.onLogin(user);
+  }
 
-  return (
-    <nav>
-    <ul className="nav-menu">
-      <NavItem href="/">Alice's Garden</NavItem>
+    return (
+      <nav>
+        <ul className="nav-menu">
+          <NavItem className="nav-header" to="/"> Alice's Garden </NavItem>
+          <Link className="nav-link" to="/category/Interiores">Interiores</Link>
+          <Link  className="nav-link" to="/category/Exteriores">Exteriores</Link>
+          <Link className="nav-link" to="/category/Cactus y Suculentas">Cactus y Suculentas</Link>
+          <Link className="nav-link" to="/cart">
+            <span>🛒</span>
+          </Link>
+  
+          <Button onClick={props.onLogout}>Log Out</Button>
+  
+          <form onSubmit={handleSubmit}>
+            Iniciar sesión
+            <input name="user"></input>
+          </form>
+        </ul>
+      </nav>
+    );
+  }
 
-{links.map((elemento) => {
-  elemento.url = "/";
-  return <NavItem href={elemento.url}>{elemento.title}</NavItem>;
-})}
-      </ul>
-      {/* {<CartWidget></CartWidget>} */}
-      <span>🛒</span>
+  export default NavBar;
 
-    </nav>
-  );
-}
 
-export default NavBar;

@@ -1,36 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { getPlants } from "../../services/mockService";
-import ItemDetail from "./ItemDetail";
+import React, { useState } from "react";
+import ItemCount from "../ItemCount/ItemCount";
+import "./itemdetail.css"; 
+import Button from "../Button/Button";
 
-function ItemDetailContainer() {
-  const [plants, setPlants] = useState({ title: "loading", price: "--,--" });
-
-  let params = useParams();
-
-  function handleAddToCart(count) {
-    console.log(
-      `Agregaste al carrito ${count} unidades del producto ${plants.title}`
-    );
-  }
-
-  useEffect(() => {
-    getPlants(params.itemid)
-      .then((respuesta) => {
-        setPlants(respuesta);
-      })
-      .catch((error) => alert(error));
-  }, []);
-
+function ItemDetail({ title, imgurl, category, price, onAddToCart }) {
   return (
-    <ItemDetail
-      onAddToCart={handleAddToCart}
-      title={plants.title}
-      imgurl={plants.imgurl}
-      category={plants.category}
-      price={plants.price}
-    />
+    <div className="card-detail_main">
+      <div className="card-detail_img">
+        <img src={imgurl} alt={title} />
+      </div>
+      <div className="card-detail_detail">
+        <h1>{title}</h1>
+        <h4 className="priceTag">$ {price}</h4>
+        <p>{category}</p>
+      </div>
+      <ItemCount onAddToCart={onAddToCart} />
+      <a href="/cart">
+        <Button>Ir al cart</Button>
+      </a>
+    </div>
   );
 }
 
-export default ItemDetailContainer;
+export default ItemDetail;
