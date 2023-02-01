@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 
 import Item from "./Item";
 import Flex from "../Flex/Flex";
-import obtenerProductos, {
-  getPlantsByCategory,
-} from "../../services/mockService";
+import obtenerProductos, {getPlantsByCategory,} from "../../services/mockService";
 import { useParams } from "react-router-dom";
 
 function ItemListContainer() {
