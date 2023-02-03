@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { getPlants } from "../../services/mockService";
+import { cartContext } from "../../storage/cartContext";
 import ItemDetail from "./ItemDetail";
 
 function ItemDetailContainer() {
   const [plants, setPlants] = useState({ title: "loading", price: "--,--" });
 
   let params = useParams();
+  const { addToCart } = useContext(cartContext);
 
   function handleAddToCart(count) {
-    console.log(
-      `Agregaste al carrito ${count} unidades del producto ${plants.title}`
-    );
+    const plantsAndCount = { ...plants, count: count };
+    addToCart(plantsAndCount);
   }
 
   useEffect(() => {
@@ -21,7 +22,6 @@ function ItemDetailContainer() {
       })
       .catch((error) => alert(error));
   }, []);
-
   return (
     <ItemDetail
       onAddToCart={handleAddToCart}
@@ -32,5 +32,4 @@ function ItemDetailContainer() {
     />
   );
 }
-
 export default ItemDetailContainer;

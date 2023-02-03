@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import NavItem from "./NavItem";
 import Button from "../Button/Button";
 import './navbar.css';
 import { Link } from "react-router-dom";
 // import CartWidget from "./CartWidget"
-
+import { cartContext } from "../storage/cartContext";
 
 function NavBar(props) {
+  const context = useContext(cartContext);
+  context.test();
+
   function handleSubmit(evt) {
     evt.preventDefault();
     let user = evt.target.elements[0].value;
@@ -24,12 +28,13 @@ function NavBar(props) {
             <span>🛒</span>
           </Link>
   
-          <Button onClick={props.onLogout}>Log Out</Button>
+          <Button onClick={props.onLogout}>Log Out: {context.user}</Button>
   
           <form onSubmit={handleSubmit}>
             Iniciar sesión
             <input name="user"></input>
           </form>
+
         </ul>
       </nav>
     );

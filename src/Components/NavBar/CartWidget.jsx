@@ -1,28 +1,15 @@
-import CartWidget from "./CartWidget"
+import React, { createContext, useContext } from "react";
+import { cartContext } from "../../storage/cartContext";
 
-function NavBar() {
-    return (
-    <nav>
-        <ul>
-        <li>
-            <a href="/">
-            <h4>Alice's Wonderland</h4>
-            </a>
-        </li>
-        <li>
-            <a href="/">Calzado</a>
-        </li>
-        <li>
-            <a href="/">Atuendos</a>
-        </li>
-        <li>
-            <a href="/">Accesorios</a>
-        </li>
-        </ul>
-        {<CartWidget></CartWidget>}
-        <span>🛒</span>
-    </nav>
-    );
+function CartWidget() {
+  const contexto = useContext(cartContext);
+
+  return (
+    <>
+      <span>🛒</span>
+      <span>{contexto.getTotalItemsInCart()}</span>
+    </>
+  );
 }
 
-export default NavBar;
+export default CartWidget;
