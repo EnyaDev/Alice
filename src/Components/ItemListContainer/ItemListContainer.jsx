@@ -25,9 +25,16 @@ function ItemListContainer() {
   }, [categoryid]);
 
 return(
-  <Flex> 
+  <>
+  {
+    plants.length === 0?
+    <h3>Cargando..</h3>
+    :
+    <Flex> 
   {plants.map( (item)=> <Item key={item.id} item={item}/>)};
   </Flex>
+  }
+  </>
   );
   }
   

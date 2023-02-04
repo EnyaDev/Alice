@@ -1,14 +1,20 @@
 // import React from "react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ItemCount from "../ItemCount/ItemCount";
+import { cartContext } from "../storage/cartContext";
 import "./itemdetail.css"; 
+import { Link } from "react-router-dom";
 // import Button from "../Button/Button";
 
-function ItemDetail({ title, imgurl, category, price}) {
+function ItemDetail({plants}) {
   const [countInCart, setCountInCart ] = useState(0);
+const {title, imgurl, category, price}= plants
+  const { addToCart } = useContext(cartContext);
 
   function handleAddToCart(count) {
-
+    const plantsAndCount = { ...plants, count: count };
+    addToCart(plantsAndCount);
+    setCountInCart(count)
   }
 
   return (
@@ -21,8 +27,8 @@ function ItemDetail({ title, imgurl, category, price}) {
         <h4 className="priceTag">$ {price}</h4>
         <p>{category}</p>
       </div>
-      <ItemCount onAddToCart={handleAddToCart} />
-        <a href="/cart">Ir al carrito</a>
+      {countInCart === 0 ? <ItemCount onAddToCart={handleAddToCart} />
+       : <Link to="/cart">Ir al carrito</Link>}
     </div>
   );
 }
