@@ -1,44 +1,53 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
+import { useDeepCopy } from "../hooks/useDeepCopy";
+
 
 export const cartContext = createContext({ cart: [] });
 
-function CartProvider(props) {
+export function CartProvider(props) {
 const [cart, setCart] = useState([]);
-
+let newCart = useDeepCopy(cart);
 const test = () => console.log("test");
-
 function addToCart(item) {
     let isInCart = cart.findIndex((itemInCart) => itemInCart.id === item.id);
-    let newCart = cart.map((item) => item);
-
     if (isInCart !== -1) {
 
-alert("Producto ya agregado!");
+    alert("Cuidado! item ya agregado");
     } else {
-newCart.push(item);
-setCart(newCart);
+    newCart.push(item);
+    setCart(newCart);
     }
+
 }
-
 function removeItem(itemid) {}
-
-function clear() {}
-
+function clear() {
+    //
+}
 function getTotalItemsInCart() {
     let total = 5;
     return cart.length;
 }
 
 function getTotalPriceInCart() {
-    return;
+    let total = 1500;
+    return total;
 }
 
 return (
     <cartContext.Provider
-    value={{ cart, test, addToCart, getTotalItemsInCart }}>
-{props.children}
-</cartContext.Provider>
+    value={{
+        cart,
+        test,
+        addToCart,
+        getTotalItemsInCart,
+        getTotalPriceInCart,
+        removeItem,
+    }}
+    >
+    {props.children}
+    </cartContext.Provider>
 );
 }
-
-export { CartProvider };
+export function useCartContext() {
+return useContext(cartContext);
+}

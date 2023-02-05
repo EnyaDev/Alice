@@ -24,15 +24,16 @@
           <Link to="/category/Interiores">Interiores</Link>
           <Link to="/category/Exteriores">Exteriores</Link>
           <Link to="/category/Cactus y Suculentas">Cactus y Suculentas</Link>
-          <Link to="/cart">
-            <CartWidget />
-          </Link>
   
-          <Button onClick={props.onLogout}>Log Out</Button>
           <form onSubmit={handleSubmit}>
             Iniciar sesión
             <input name="user"></input>
           </form>
+          <Button onClick={props.onLogout}>Log Out</Button>
+
+          <Link to="/cart">
+            <CartWidget />
+          </Link>
         </ul>
       </nav>
     );
