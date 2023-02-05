@@ -6,8 +6,7 @@ function UserProvider(props) {
   const user = "Melissa";
   const logedin = true;
   function test() {
-    console.log("test");
-  }
+  };
 
   return (
     <userContext.Provider value={{ user, logedin, test }}>

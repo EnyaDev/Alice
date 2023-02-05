@@ -2,11 +2,15 @@ import { useState, useEffect } from "react";
 
 import Item from "./Item";
 import Flex from "../Flex/Flex";
-import obtenerProductos, {getPlantsByCategory,} from "../../services/mockService";
+import { getPlantsByCategory } from "../../services/firebase";
+import { obtenerProductos } from "../../services/firebase";
 import { useParams } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 function ItemListContainer() {
   const [plants, setPlants] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [alertText, setAlertText] = useState();
   let { categoryid } = useParams();
 
 
@@ -15,27 +19,43 @@ function ItemListContainer() {
       obtenerProductos()
         .then((respuesta) => {
           setPlants(respuesta);
+          setAlertText({
+            text: "Items Cargados Correctamente",
+            type: "default",
+          });
         })
-        .catch((error) => alert(error));
-    } else {
+        .catch((error) => {
+        setAlertText({ text: error, type: "danger" });
+      })
+      .finally(() => setIsLoading(false));
+  } else {
       getPlantsByCategory(categoryid).then((respuesta) => {
         setPlants(respuesta);
-      });
+        setIsLoading(false);
+      })
+      .finally(() => setIsLoading(false));
     }
   }, [categoryid]);
-
-return(
-  <>
-  {
-    plants.length === 0?
-    <h3>Cargando..</h3>
-    :
-    <Flex> 
-  {plants.map( (item)=> <Item key={item.id} item={item}/>)};
-  </Flex>
+  if (isLoading) {
+    return <Loader size={120} color="orange" />;
+  } else {
+    return (
+      <>
+        <Flex>
+          {alertText && (
+            <div className="alert_container">
+              <span className={`alert alert_${alertText.type}`}>
+                {alertText.text}
+              </span>
+            </div>
+          )}
+          <Flex>
+            {plants.map((itemIterado) => {
+              return <Item key={itemIterado.id} item={itemIterado} />;
+            })}
+          </Flex>
+        </Flex>
+      </>
+    );
   }
-  </>
-  );
-  }
-  
-  export default ItemListContainer;
+}

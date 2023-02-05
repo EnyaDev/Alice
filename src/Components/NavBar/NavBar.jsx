@@ -14,7 +14,6 @@
     function handleSubmit(evt) {
       evt.preventDefault();
       let user = evt.target.elements[0].value;
-      console.log(user);
       props.onLogin(user);
     }
     return (

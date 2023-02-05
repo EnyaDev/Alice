@@ -1,6 +1,5 @@
 import React from "react";
 import "./loader.css";
-import { DotSpinner } from "@uiball/loaders";
 
 function Loader(props) {
     let styleContainer = {

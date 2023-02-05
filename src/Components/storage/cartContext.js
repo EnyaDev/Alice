@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState, useContext } from "react";
-import { useDeepCopy } from "../hooks/useDeepCopy";
+import { useDeepCopy } from "../Hooks/UseDeepCopy";
 
 
 export const cartContext = createContext({ cart: [] });
@@ -7,7 +7,7 @@ export const cartContext = createContext({ cart: [] });
 export function CartProvider(props) {
 const [cart, setCart] = useState([]);
 let newCart = useDeepCopy(cart);
-const test = () => console.log("test");
+
 function addToCart(item) {
     let isInCart = cart.findIndex((itemInCart) => itemInCart.id === item.id);
     if (isInCart !== -1) {
