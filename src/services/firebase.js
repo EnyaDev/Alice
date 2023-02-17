@@ -70,7 +70,7 @@ const plants = snapshot.docs.map((elem) => {
 return plants;
 }
 
-export async function createOrder(order) {
+export async function createOrder_WithStockControl(order) {
 const orderRef = collection(db, "order");
 
 let respuesta = await addDoc(orderRef, order);
@@ -206,3 +206,5 @@ for (let item of products) {
 batch.commit().then(() => console.log("batch listo"));
 
 }
+
+export default db;

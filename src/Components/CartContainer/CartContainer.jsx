@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import { createOrder } from "../../services/firebase";
+import Swal from "sweetalert2";
+import { createOrder_WithStockControl } from "../../services/firebase";
 import { useCartContext } from "../storage/cartContext";
 import Button from "../Button/Button";
 import "./cart.css";
 import { useNavigate } from "react-router-dom";
-
+import FormCheckout from "../FormOrder/FormCheckout";
 
 function CartContainer() {
   const [orderId, setOrderId] = useState();
 
   const { cart, getTotalPriceInCart } = useCartContext();
 
-  function handleCheckout(evt) {
+  function handleCheckout(evt, userData) {
+    evt.preventDefault();
     const items = cart.map(({ id, price, title, count }) => ({
       id,
       price,
@@ -20,24 +22,36 @@ function CartContainer() {
     }));
 
     const order = {
-      buyer: {
-        name: "Melissa",
-        email: "mel@re.com",
-        phone: 123456,
-      },
+      buyer: userData,
       items: items, // id, title, price, count
       total: getTotalPriceInCart(),
       date: new Date(),
     };
 
     async function sendOrder() {
-      let id = await createOrder(order);
-      setOrderId(id);
+      try {
+        let id = await createOrder_WithStockControl(order);
+        setOrderId(id);
+      } catch (error) {
+        Swal.fire({
+          title: "Ocurrió un error con tu compra",
+          text: error,
+          icon: "error",
+          confirmButtonText: "Volver",
+        });
+      }
     }
+
     sendOrder();
   }
 
   if (orderId)
+    return (
+      <div>
+        <h1>Gracias por tu compra</h1>
+        <p>El id de tu compra {orderId}</p>
+      </div>
+    );
     
   return (
     <>
@@ -75,7 +89,7 @@ function CartContainer() {
       <div className="cartList_detail">
         <h4>El total de tu compra es de $ --,--</h4>
       </div>
-      <Button onClick={handleCheckout}>Finalizar Compra</Button>
+      <FormCheckout onCheckout={handleCheckout} />
     </>
   );
 }

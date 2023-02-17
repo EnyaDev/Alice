@@ -5,7 +5,7 @@ import Flex from "../Flex/Flex";
 import { getPlantsByCategory } from "../../services/firebase";
 import { obtenerProductos } from "../../services/firebase";
 import { useParams } from "react-router-dom";
-import Loader from "../Loader/Loader";
+import Loader from "../Loaders/Loader";
 
 function ItemListContainer() {
   const [plants, setPlants] = useState([]);
@@ -37,7 +37,7 @@ function ItemListContainer() {
     }
   }, [categoryid]);
   if (isLoading) {
-    return <Loader size={120} color="orange" />;
+    return <Loader size={120} />;
   } else {
     return (
       <>
@@ -59,3 +59,5 @@ function ItemListContainer() {
     );
   }
 }
+
+export default ItemListContainer;

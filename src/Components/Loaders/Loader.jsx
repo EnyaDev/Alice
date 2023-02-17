@@ -10,7 +10,15 @@ function Loader(props) {
     
       return (
         <div style={styleContainer}>
-          <DotSpinner size={80} speed={1.4} color="purple" {...props} />
+          <Loader
+  visible={true}
+  height="80"
+  width="80"
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/>
         </div>
       );
     }
