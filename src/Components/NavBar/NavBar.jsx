@@ -9,7 +9,6 @@
   
   function NavBar(props) {
     const context = useContext(cartContext);
-    context.test();
   
     function handleSubmit(evt) {
       evt.preventDefault();

@@ -48,7 +48,7 @@ function CartContainer() {
   if (orderId)
     return (
       <div>
-        <h1>Gracias por tu compra</h1>
+        <h1>Gracias por tu compra!</h1>
         <p>El id de tu compra {orderId}</p>
       </div>
     );
@@ -77,7 +77,7 @@ function CartContainer() {
               <td>$ {item.price}</td>
               <td>{item.count}</td>
               <td>
-                <Button color="#38603A" onClick={item.removeItem}>
+                <Button color="#689D6D" onClick={item.removeItem}>
                   X
                 </Button>
               </td>

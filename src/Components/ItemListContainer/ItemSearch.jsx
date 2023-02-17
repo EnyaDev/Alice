@@ -5,7 +5,7 @@ import { getPlantsByCategory, getPlantsByKeyowrd } from "../../services/firebase
 import { obtenerProductos } from "../../services/firebase";
 import { useParams } from "react-router-dom";
 import "./alert.css";
-import Loader from "../Loader/Loader";
+import Loader from "../Loaders/Loader";
 
 
 function ItemListContainerSearch() {

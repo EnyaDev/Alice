@@ -9,8 +9,8 @@ import {
     where,
     orderBy,
     addDoc,
-    Firestore,
     writeBatch,
+    documentId,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -38,6 +38,7 @@ const plants = snapshot.docs.map((elem) => {
 
 return plants;
 }
+
 export async function getPlants(idUrl) {
 const productsRef = collection(db, "products");
 const docRef = doc(productsRef, idUrl);
@@ -45,6 +46,7 @@ const docRef = doc(productsRef, idUrl);
 const snapshot = await getDoc(docRef);
 return { ...snapshot.data(), id: snapshot.id };
 }
+
 export async function getPlantsByCategory(categoryUrl) {
 const productsRef = collection(db, "products");
 

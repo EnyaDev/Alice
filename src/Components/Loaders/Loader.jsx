@@ -1,21 +1,20 @@
 import React from "react";
+import { Ring } from '@uiball/loaders'
 import "./loader.css";
-import { DotSpinner } from "@uiball/loaders";
 
 function Loader(props) {
-  /*  return <div class="lds-dual-ring"></div>; */
-  return <DotSpinner size={80} speed={1.4} color="purple" {...props} />;
-  let styleContainer = {
-    display: "flex",
-    width: "100%",
-    justifyContent: "center",
-  };
 
-  return (
-    <div style={styleContainer}>
-      <DotSpinner size={80} speed={1.4} color="purple" {...props} />
-    </div>
-  );
+let styleContainer = {
+  display: "flex",
+  width: "100%",
+  justifyContent: "center",
+};
+
+return (
+  <div style={styleContainer}>
+    <Ring size={40} speed={1.4} lineWeight={5} color="#689D6D" {...props} />
+  </div>
+);
 }
 
 export default Loader;

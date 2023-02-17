@@ -19,10 +19,6 @@ function ItemListContainer() {
       obtenerProductos()
         .then((respuesta) => {
           setPlants(respuesta);
-          setAlertText({
-            text: "Items Cargados Correctamente",
-            type: "default",
-          });
         })
         .catch((error) => {
         setAlertText({ text: error, type: "danger" });

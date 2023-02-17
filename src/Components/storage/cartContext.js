@@ -21,7 +21,6 @@ function addToCart(item) {
 }
 function removeItem(itemid) {}
 function clear() {
-    //
 }
 function getTotalItemsInCart() {
     let total = 5;
@@ -37,7 +36,6 @@ return (
     <cartContext.Provider
     value={{
         cart,
-        test,
         addToCart,
         getTotalItemsInCart,
         getTotalPriceInCart,
@@ -48,6 +46,7 @@ return (
     </cartContext.Provider>
 );
 }
+
 export function useCartContext() {
 return useContext(cartContext);
 }

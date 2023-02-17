@@ -17,9 +17,9 @@ return (
 
 export default function FormCheckout(props) {
 const [userData, setUserData] = useState({
-    name: "",
-    phone: "",
-    email: "",
+    Name: "",
+    Phone: "",
+    Email: "",
 });
 
 let fieldsForm = Object.keys(userData);
