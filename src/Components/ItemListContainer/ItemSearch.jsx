@@ -6,6 +6,8 @@ import { obtenerProductos } from "../../services/firebase";
 import { useParams } from "react-router-dom";
 import "./alert.css";
 import Loader from "../Loader/Loader";
+
+
 function ItemListContainerSearch() {
   const [Plants, setPlants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -96,4 +98,6 @@ function ItemListContainerSearch() {
       );
     }
   }
+
+  
   export default ItemListContainerSearch;

@@ -12,7 +12,7 @@ function App() {
   }
 
   function logInSession(username) {
-    alert(`Bienvenido el usuario: ${username}`);
+    alert(`Bienvenido: ${username}`);
   }
 
   return (
