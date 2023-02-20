@@ -40,9 +40,9 @@ function onSubmit(evt) {
 
 function formIsInvalid() {
     return !(
-    userData.name !== "" &&
-    userData.phone !== "" &&
-    userData.email !== ""
+    userData.Name !== "" &&
+    userData.Phone !== "" &&
+    userData.Email !== ""
     );
 }
 

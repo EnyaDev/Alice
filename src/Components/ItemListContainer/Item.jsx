@@ -1,29 +1,30 @@
 // import { useState } from "react";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
-import './item.css';
+import "./item.css";
 
-function Item(props){
-const {title, imgurl, category, price, id} = props.item;
+function Item(props) {
+  const { title, imgurl, category, price, id } = props.item;
 
-    return(
-        <div className="card-container">
+  return (
+    <div className="flex-Container">
+      <div className="card-container">
         <div className="card-header">
-        <h2>{title}</h2>
+          <h2>{title}</h2>
         </div>
-        <br/>
+        <br />
         <img className="card-img" src={imgurl} alt={title} />
         <div className="card-detail">
-        <h3 className="card-price">$ {price}</h3>
-        <small>{category}</small>
+          <h3 className="card-price">$ {price}</h3>
+          <small>{category}</small>
         </div>
-        <Link to={`/detalle/${id}`}>
+      </div>
+      <Link to={`/detalle/${id}`}>
         <Button padding="10px">Ver Mas</Button>
-        </Link>
-        <br></br>
+      </Link>
+      <br></br>
     </div>
-    )
+  );
 }
 
 export default Item;
-
