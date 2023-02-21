@@ -49,15 +49,17 @@ function formIsInvalid() {
 return (
     <form onSubmit={onSubmit}>
     <h1>Llena tus datos para finalizar la compra 🛍</h1>
-    {fieldsForm.map((field) => (
-        <InputForm
-        value={userData[field]}
-        name={field}
-        onChange={onInputChange}
-        label={field}
-        userData={userData}
-        />
-    ))}
+    {fieldsForm.map((field, index) => (
+  <InputForm
+    key={field.name + "_" + index} // Agregamos key con el nombre del campo y el índice
+    value={userData[field]}
+    name={field}
+    onChange={onInputChange}
+    label={field}
+    userData={userData}
+  />
+))}
+
     <Button
         onClick={(evt) => props.onCheckout(evt, userData)}
         disabled={formIsInvalid()}
