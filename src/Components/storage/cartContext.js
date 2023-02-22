@@ -8,6 +8,7 @@ export function CartProvider(props) {
 const [cart, setCart] = useState([]);
 let newCart = useDeepCopy(cart);
 
+
 function addToCart(item) {
     let isInCart = cart.findIndex((itemInCart) => itemInCart.id === item.id);
     if (isInCart !== -1) {
@@ -22,6 +23,7 @@ function addToCart(item) {
 function removeItem(itemid) {}
 function clear() {
 }
+
 function getTotalItemsInCart() {
     let total = 5;
     return cart.length;
@@ -34,6 +36,7 @@ function getTotalPriceInCart() {
 
 return (
     <cartContext.Provider
+    
     value={{
         cart,
         addToCart,

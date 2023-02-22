@@ -74,6 +74,7 @@ return plants;
 export async function createOrder(order) {
 const orderRef = collection(db, "order");
 
+
 let respuesta = await addDoc(orderRef, order);
 
 return respuesta.id;

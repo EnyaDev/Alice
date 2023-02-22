@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 import "./itemdetail.css"; 
 import Button from "../Button/Button";
@@ -23,9 +25,10 @@ function ItemDetail({
         <p>{category}</p>
       </div>
       {isInCart ? (
-        <a href="/cart">
+        <Link to="/cart">
           <Button>Ir al cart</Button>
-        </a>
+        </Link>
+
         ) : (
         <ItemCount stock={stockUpdated} onAddToCart={onAddToCart} />
       )}
