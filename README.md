@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Dillinger
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
+[![N|Solid](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4Nhtli5aSkLo8igB8oRJM49A8XBx8f15gENCCcuvf80kuqyUOrZ8giQgy4GZ7Ix_sb6c&usqp=CAU)](https://nodesource.com/products/nsolid)
 
 In the project directory, you can run:
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-### `npm start`
+✨ App creada para curso de ReactJs de CoderHouse✨
+
+Ecommerce desarrollado con React
+- Estilos con materila UI
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Como clonar
 
-### `npm test`
+- git clone ....
+- npm install
+- npm run start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Librerias
 
-### `npm run build`
+# Sweet Alert
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+https://sweetalert2.github.io/#download
+DOWNLOAD OR INSTALL
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- npm install sweetalert2
+- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Initialize the plugin by referencing the necessary files: <script src="sweetalert2.all.min.js"></script>
+OR 
+// ES6 Modules or TypeScript
+import Swal from 'sweetalert2'
 
-### `npm run eject`
+// CommonJS
+const Swal = require('sweetalert2')
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Call the sweetAlert2-function after the page has loaded
+Swal.fire({
+  title: 'Error!',
+  text: 'Do you want to continue',
+  icon: 'error',
+  confirmButtonText: 'Cool'
+})
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# UIball Loaders
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+https://uiball.com/loaders/
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Add
+With the package manager of your choice.
 
-## Learn More
+npm i @uiball/loaders
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Import
+We export lightweight ESM modules for maximum tree-shakability.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+import { Orbit } from '@uiball/loaders'
 
-### Code Splitting
+3. Apply
+Customize with a few simple options for fun and profit.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<Orbit size={35} color="#689D6D" />
 
-### Analyzing the Bundle Size
+This text you see here is \*actually- written in Markdown! To get a feel
+for Markdown's syntax, type some text into the left window and
+watch the results in the right.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
